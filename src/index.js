@@ -8,7 +8,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: []
+      users: [],
+      searchText: ""
     };
   }
   componentDidMount() {
@@ -17,15 +18,27 @@ class App extends React.Component {
       .then(userdata => this.setState({ users: userdata }));
   }
   render() {
-    var usersData = this.state.users;
+    const usersData = this.state.users;
+    const search = this.state.searchText;
+    const filteredUsers = usersData.filter(user => user.name.includes(search));
     return (
       <div>
         <h1>Usergram</h1>
         <p>An application that think about User first</p>
-        <UsersList users={usersData} />
+        <div className="searchbox">
+          <input
+            type="text"
+            placeholder="Enter your Search Value"
+            onChange={this.handleChange}
+          />
+        </div>
+        <UsersList users={filteredUsers} />
       </div>
     );
   }
+  handleChange = e => {
+    this.setState({ searchText: e.target.value });
+  };
 }
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
