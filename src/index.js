@@ -22,7 +22,7 @@ class App extends React.Component {
     const search = this.state.searchText;
     const filteredUsers = usersData.filter(user => user.name.includes(search));
     return (
-      <div>
+      <div className="approot">
         <h1>Usergram</h1>
         <p>An application that think about User first</p>
         <div className="searchbox">
