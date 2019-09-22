@@ -27,7 +27,7 @@ class App extends React.Component {
         <h1>Usergram</h1>
         <p>An application that think about User first</p>
         <div className="searchbox">
-          <SearchBox />
+          <SearchBox handleChange={this.handleChange} />
         </div>
         <UsersList users={filteredUsers} />
       </div>
