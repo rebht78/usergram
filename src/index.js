@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import SearchBox from "./components/searchbox/searchbox.component";
 import UsersList from "./components/users-list/users-list.component";
 
 import "./styles.css";
@@ -26,11 +27,7 @@ class App extends React.Component {
         <h1>Usergram</h1>
         <p>An application that think about User first</p>
         <div className="searchbox">
-          <input
-            type="text"
-            placeholder="Enter your Search Value"
-            onChange={this.handleChange}
-          />
+          <SearchBox />
         </div>
         <UsersList users={filteredUsers} />
       </div>
