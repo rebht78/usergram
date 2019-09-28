@@ -5,7 +5,7 @@ const SearchBox = ({ handleChange }) => {
   return (
     <input
       type="text"
-      className="search"
+      className="ui input"
       placeholder="Enter your Search Value"
       onChange={handleChange}
     />

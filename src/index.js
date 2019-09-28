@@ -1,23 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import SearchBox from "./components/searchbox/searchbox.component";
 import UsersList from "./components/users-list/users-list.component";
-
+import SearchBox from "./components/searchbox/searchbox.component";
 import "./styles.css";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      users: [],
-      searchText: ""
-    };
-  }
+  state = {
+    users: [],
+    searchText: ""
+  };
   componentDidMount() {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then(response => response.json())
       .then(userdata => this.setState({ users: userdata }));
   }
+  handleChange = event => {
+    this.setState({ searchText: event.target.value });
+  };
   render() {
     const usersData = this.state.users;
     const search = this.state.searchText;
@@ -33,9 +32,6 @@ class App extends React.Component {
       </div>
     );
   }
-  handleChange = e => {
-    this.setState({ searchText: e.target.value });
-  };
 }
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
